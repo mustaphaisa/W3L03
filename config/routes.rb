@@ -1,9 +1,19 @@
 WikiwitnessDemo::Application.routes.draw do
-  resources :narratives
+  get "users/new"
 
-  resources :events
+  root to: 'static_pages#home'
+
+  match '/signup',  to: 'users#new'
+
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
 
   resources :users
+  resources :events
+  resources :narratives
+end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -61,4 +71,3 @@ WikiwitnessDemo::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-end
